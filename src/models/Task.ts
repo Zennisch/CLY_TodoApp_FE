@@ -1,27 +1,27 @@
 export interface Task {
-    id: number;
-    title: string;
-    description: string;
-    completed: boolean;
+	id: number;
+	title: string;
+	description: string;
+	completed: boolean;
 }
 
 export interface CreateTaskRequest {
-    title: string;
-    description: string;
+	title: string;
+	description: string;
 }
 
 export interface CreateTaskResponse {
-    task: Task;
+	task: Task;
 }
 
 export interface UpdateTaskRequest {
-    completed: boolean;
+	completed: boolean;
 }
 
 export interface UpdateTaskResponse {
-    completed: boolean;
+	completed: boolean;
 }
 
 export interface GetTasksResponse {
-    tasks: Task[];
+	tasks: Task[];
 }

@@ -8,6 +8,7 @@ import { Button } from "../components/Button";
 import PlusIcon from "@/assets/plus.svg";
 import RefreshIcon from "@/assets/refresh.svg";
 import { TaskModal } from "../components/TaskModal";
+import { ErrorMessage } from "../components/ErrorMessage";
 
 export const TodoAppPage = () => {
 	const {
@@ -47,6 +48,15 @@ export const TodoAppPage = () => {
 						Quản lý công việc một cách hiệu quả và thông minh
 					</p>
 				</div>
+
+				{/* Error Message */}
+				{error && (
+					<ErrorMessage
+						message={error}
+						onRetry={() => refreshTasks()}
+						onDismiss={() => clearError()}
+					/>
+				)}
 
 				{/* Task Stats */}
 				<TaskStats tasks={tasks} />
@@ -98,12 +108,12 @@ export const TodoAppPage = () => {
 				</div>
 			</div>
 
-            <TaskModal
-                isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                onCreateTask={handleCreateTask}
-                loading={loading}
-            />
+			<TaskModal
+				isOpen={isModalOpen}
+				onClose={() => setIsModalOpen(false)}
+				onCreateTask={handleCreateTask}
+				loading={loading}
+			/>
 		</div>
 	);
 };

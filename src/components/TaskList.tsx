@@ -28,17 +28,17 @@ export const TaskList: React.FC<TaskListProps> = ({
 		);
 	}
 
-    return (
-        <div className="space-y-3">
-            {tasks.map((task) => (
-                <TaskItem
-                    key={task.id}
-                    task={task}
-                    onToggle={onToggleTask}
-                    onDelete={onDeleteTask}
-                    loading={loading}
-                />
-            ))}
-        </div>
-    )
+	return (
+		<div className="space-y-3">
+			{tasks.map((task) => (
+				<TaskItem
+					key={task.id}
+					task={task}
+					onToggle={onToggleTask}
+					onDelete={onDeleteTask}
+					loading={loading}
+				/>
+			))}
+		</div>
+	);
 };
