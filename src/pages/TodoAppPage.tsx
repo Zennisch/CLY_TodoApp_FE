@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTask } from "../hooks/useTask";
 import type { CreateTaskRequest } from "../models/Task";
+import { LoadingSpinner } from "../components/LoadingSpinner";
 
 export const TodoAppPage = () => {
 	const {
@@ -39,6 +40,16 @@ export const TodoAppPage = () => {
 					<p className="text-lg text-gray-600">
 						Quản lý công việc một cách hiệu quả và thông minh
 					</p>
+				</div>
+
+				<div className="bg-white border border-gray-200 rounded-lg shadow-sm">
+					<div className="p-4">
+                        {loading && tasks.length === 0 ? (
+                            <LoadingSpinner size="lg" />
+                        ) : (
+                            <></>
+                        )}
+                    </div>
 				</div>
 
 				{/* Footer Fixed*/}
