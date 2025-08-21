@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTask } from "../hooks/useTask";
 import type { CreateTaskRequest } from "../models/Task";
 import { LoadingSpinner } from "../components/LoadingSpinner";
+import { TaskList } from "../components/TaskList";
 
 export const TodoAppPage = () => {
 	const {
@@ -42,12 +43,18 @@ export const TodoAppPage = () => {
 					</p>
 				</div>
 
+                {/* Task List */}
 				<div className="bg-white border border-gray-200 rounded-lg shadow-sm">
 					<div className="p-4">
                         {loading && tasks.length === 0 ? (
                             <LoadingSpinner size="lg" />
                         ) : (
-                            <></>
+                            <TaskList
+                                tasks={tasks}
+                                onToggleTask={handleToggleTask}
+                                onDeleteTask={handleDeleteTask}
+                                loading={loading}
+                            />
                         )}
                     </div>
 				</div>
