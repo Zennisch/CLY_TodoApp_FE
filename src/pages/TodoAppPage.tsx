@@ -3,6 +3,10 @@ import { useTask } from "../hooks/useTask";
 import type { CreateTaskRequest } from "../models/Task";
 import { LoadingSpinner } from "../components/LoadingSpinner";
 import { TaskList } from "../components/TaskList";
+import { TaskStats } from "../components/TaskStat";
+import { Button } from "../components/Button";
+import PlusIcon from "@/assets/plus.svg";
+import RefreshIcon from "@/assets/refresh.svg";
 
 export const TodoAppPage = () => {
 	const {
@@ -43,20 +47,48 @@ export const TodoAppPage = () => {
 					</p>
 				</div>
 
-                {/* Task List */}
+				{/* Task Stats */}
+				<TaskStats tasks={tasks} />
+
+				{/* Action Buttons */}
+				<div className="flex justify-between items-center mb-6">
+					<h2 className="text-xl font-semibold text-gray-900">
+						Danh sách Task ({tasks.length})
+					</h2>
+
+					<div className="flex gap-3">
+						<Button variant="secondary" onClick={() => setIsModalOpen(true)}>
+							<img src={PlusIcon} alt="Tạo task mới" className="w-5 h-5" />
+						</Button>
+
+						<Button
+							variant="secondary"
+							onClick={() => refreshTasks()}
+							disabled={loading}
+						>
+							<img
+								src={RefreshIcon}
+								alt="Làm mới danh sách"
+								className={`w-5 h-5 ${loading ? "animate-spin" : ""}`}
+							/>
+						</Button>
+					</div>
+				</div>
+
+				{/* Task List */}
 				<div className="bg-white border border-gray-200 rounded-lg shadow-sm">
 					<div className="p-4">
-                        {loading && tasks.length === 0 ? (
-                            <LoadingSpinner size="lg" />
-                        ) : (
-                            <TaskList
-                                tasks={tasks}
-                                onToggleTask={handleToggleTask}
-                                onDeleteTask={handleDeleteTask}
-                                loading={loading}
-                            />
-                        )}
-                    </div>
+						{loading && tasks.length === 0 ? (
+							<LoadingSpinner size="lg" />
+						) : (
+							<TaskList
+								tasks={tasks}
+								onToggleTask={handleToggleTask}
+								onDeleteTask={handleDeleteTask}
+								loading={loading}
+							/>
+						)}
+					</div>
 				</div>
 
 				{/* Footer Fixed*/}

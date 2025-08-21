@@ -1,4 +1,5 @@
 import type { Task } from "../models/Task";
+import { Button } from "./Button";
 import { Checkbox } from "./Checkbox";
 import DeleteIcon from "@/assets/delete.svg";
 
@@ -48,14 +49,15 @@ export const TaskItem: React.FC<TaskItemProps> = ({
 					</div>
 				</div>
 				<div className="flex-shrink-0">
-					<button
+					<Button
+						variant="secondary"
 						onClick={() => onDelete(task.id)}
 						disabled={loading}
-						className="p-2 text-red-600 border border-red-200 rounded-lg hover:bg-red-50 hover:border-red-300 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+						className="p-2"
 						title="Xóa task"
 					>
-						<img src={DeleteIcon} alt="Delete Task" className="w-5 h-5" />
-					</button>
+						<img src={DeleteIcon} alt="Xóa Task" className="w-5 h-5" />
+					</Button>
 				</div>
 			</div>
 		</div>
